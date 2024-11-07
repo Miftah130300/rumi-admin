@@ -26,6 +26,11 @@
     },
     "description": {
       "type": "text"
+    },
+    "properti": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::properti.properti"
     }
   }
 }

@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "propertis",
+  "info": {
+    "singularName": "properti",
+    "pluralName": "propertis",
+    "displayName": "Properti",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "price": {
+      "type": "decimal"
+    },
+    "address": {
+      "type": "string"
+    },
+    "luasTanah": {
+      "type": "string"
+    },
+    "luasBangunan": {
+      "type": "string"
+    },
+    "jumlahKamarMandi": {
+      "type": "string"
+    },
+    "jumlahKamarTidur": {
+      "type": "string"
+    },
+    "jenisSertifikat": {
+      "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "detailDescription": {
+      "type": "blocks"
+    },
+    "imageProperty": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "bannerProperty": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

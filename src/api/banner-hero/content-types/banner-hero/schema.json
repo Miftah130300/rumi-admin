@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "banner_heroes",
+  "info": {
+    "singularName": "banner-hero",
+    "pluralName": "banner-heroes",
+    "displayName": "bannerHero"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "bannerImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

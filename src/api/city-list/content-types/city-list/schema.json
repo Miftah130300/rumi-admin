@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "city_lists",
+  "info": {
+    "singularName": "city-list",
+    "pluralName": "city-lists",
+    "displayName": "cityList"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nameCity": {
+      "type": "string"
+    },
+    "imageCity": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

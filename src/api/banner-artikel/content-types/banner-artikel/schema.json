@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "banner_artikels",
+  "info": {
+    "singularName": "banner-artikel",
+    "pluralName": "banner-artikels",
+    "displayName": "BannerArtikel"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "bannerImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
