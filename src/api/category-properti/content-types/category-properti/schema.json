@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "category_propertis",
+  "info": {
+    "singularName": "category-properti",
+    "pluralName": "category-propertis",
+    "displayName": "categoryProperti",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "nameCategory": {
+      "type": "string"
+    }
+  }
+}

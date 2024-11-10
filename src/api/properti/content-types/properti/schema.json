@@ -36,33 +36,40 @@
     "jenisSertifikat": {
       "type": "string"
     },
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::category.category"
-    },
     "detailDescription": {
       "type": "blocks"
     },
     "imageProperty": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
     },
     "bannerProperty": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
+    },
+    "category_properti": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category-properti.category-properti"
+    },
+    "city_list": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::city-list.city-list"
     }
   }
 }

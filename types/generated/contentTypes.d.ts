@@ -414,7 +414,10 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     blocks: Schema.Attribute.DynamicZone<
       ['shared.media', 'shared.quote', 'shared.rich-text', 'shared.slider']
     >;
-    category: Schema.Attribute.Relation<'manyToOne', 'api::category.category'>;
+    category_article: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::category-article.category-article'
+    >;
     cover: Schema.Attribute.Media<'images' | 'files' | 'videos'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -504,7 +507,7 @@ export interface ApiBannerArtikelBannerArtikel extends Struct.SingleTypeSchema {
 export interface ApiBannerHeroBannerHero extends Struct.CollectionTypeSchema {
   collectionName: 'banner_heroes';
   info: {
-    displayName: 'bannerHero';
+    displayName: 'BannerHero';
     pluralName: 'banner-heroes';
     singularName: 'banner-hero';
   };
@@ -512,13 +515,12 @@ export interface ApiBannerHeroBannerHero extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    bannerImage: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    imageBanner: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -533,33 +535,60 @@ export interface ApiBannerHeroBannerHero extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
-  collectionName: 'categories';
+export interface ApiCategoryArticleCategoryArticle
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'category_articles';
   info: {
-    description: 'Organize your content into categories';
-    displayName: 'Category';
-    pluralName: 'categories';
-    singularName: 'category';
+    displayName: 'categoryArticle';
+    pluralName: 'category-articles';
+    singularName: 'category-article';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   attributes: {
-    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
+    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::category.category'
+      'api::category-article.category-article'
     > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
-    properti: Schema.Attribute.Relation<'oneToOne', 'api::properti.properti'>;
+    nameCategory: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
-    slug: Schema.Attribute.UID;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCategoryPropertiCategoryProperti
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'category_propertis';
+  info: {
+    description: '';
+    displayName: 'categoryProperti';
+    pluralName: 'category-propertis';
+    singularName: 'category-properti';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::category-properti.category-properti'
+    > &
+      Schema.Attribute.Private;
+    nameCategory: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -674,7 +703,14 @@ export interface ApiPropertiProperti extends Struct.CollectionTypeSchema {
     bannerProperty: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;
-    category: Schema.Attribute.Relation<'oneToOne', 'api::category.category'>;
+    category_properti: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::category-properti.category-properti'
+    >;
+    city_list: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::city-list.city-list'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1244,7 +1280,8 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::banner-artikel.banner-artikel': ApiBannerArtikelBannerArtikel;
       'api::banner-hero.banner-hero': ApiBannerHeroBannerHero;
-      'api::category.category': ApiCategoryCategory;
+      'api::category-article.category-article': ApiCategoryArticleCategoryArticle;
+      'api::category-properti.category-properti': ApiCategoryPropertiCategoryProperti;
       'api::city-list.city-list': ApiCityListCityList;
       'api::global.global': ApiGlobalGlobal;
       'api::partner-list.partner-list': ApiPartnerListPartnerList;

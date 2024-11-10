@@ -4,7 +4,7 @@
   "info": {
     "singularName": "banner-hero",
     "pluralName": "banner-heroes",
-    "displayName": "bannerHero"
+    "displayName": "BannerHero"
   },
   "options": {
     "draftAndPublish": true
@@ -14,7 +14,7 @@
     "title": {
       "type": "string"
     },
-    "bannerImage": {
+    "imageBanner": {
       "allowedTypes": [
         "images",
         "files",
@@ -22,7 +22,7 @@
         "audios"
       ],
       "type": "media",
-      "multiple": true
+      "multiple": false
     }
   }
 }
